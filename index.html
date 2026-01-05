@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trip Itinerary — Your Client-Ready Template</title>
+  <meta name="description" content="Clean, client-friendly trip itinerary template: overview, day-by-day plan, hotels, dining & activities, logistics, FAQs, and gallery.">
+  <meta name="theme-color" content="#1F4B99">
+  <!-- Open Graph for nicer sharing -->
+  <meta property="og:title" content="Trip Itinerary">
+  <meta property="og:description" content="A beautiful, shareable itinerary your travelers will love.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/cover.jpg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">✈︎ Trip</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#overview">Overview</a>
+      <a href="#daily">Daily Plan</a>
+      <a href="#hotels">Hotels</a>
+      <a href="#experiences">Dining & Activities</a>
+      <a href="#logistics">Logistics</a>
+      <a href="#map">Map</a>
+      <a href="#faq">FAQ</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button id="printBtn" class="btn ghost" aria-label="Download PDF">Download PDF</button>
+      <button id="icsBtn" class="btn" aria-label="Download calendar file">Add to Calendar</button>
+    </div>
+  </header>
+
+  <section class="hero" role="banner" aria-label="Trip cover">
+    <div class="hero__content">
+      <h1 id="tripTitle">Your Destination</h1>
+      <p id="tripDates" class="subtitle">Trip dates</p>
+      <p id="tripTagline" class="tagline">A short, compelling line about the trip.</p>
+      <div class="hero__cta">
+        <a href="#daily" class="btn">View Daily Plan</a>
+        <a href="#hotels" class="btn ghost">See Hotel Picks</a>
+      </div>
+    </div>
+  </section>
+
+  <main id="content" class="container">
+    <section id="overview" class="card">
+      <h2>Overview</h2>
+      <div id="overviewText" class="richtext"></div>
+      <ul id="highlights" class="list highlights" aria-label="Trip highlights"></ul>
+      <div class="trip-meta">
+        <div><strong>Travelers:</strong> <span id="travelers"></span></div>
+        <div><strong>Advisor:</strong> <span id="advisor"></span></div>
+      </div>
+    </section>
+
+    <section id="daily" class="card">
+      <h2>Daily Plan</h2>
+      <div id="dayList" class="day-list"></div>
+    </section>
+
+    <section id="hotels" class="card">
+      <h2>Hotels</h2>
+      <div id="hotelList" class="grid"></div>
+    </section>
+
+    <section id="experiences" class="card">
+      <h2>Dining & Activities</h2>
+      <div id="experienceFilters" class="filters"></div>
+      <div id="experienceList" class="grid"></div>
+    </section>
+
+    <section id="logistics" class="card">
+      <h2>Logistics</h2>
+      <div class="logistics-grid">
+        <div>
+          <h3>Flights</h3>
+          <div id="flightList" class="stack"></div>
+        </div>
+        <div>
+          <h3>Ground Transfers</h3>
+          <div id="transferList" class="stack"></div>
+        </div>
+        <div>
+          <h3>Reservations</h3>
+          <div id="reservationList" class="stack"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="map" class="card">
+      <h2>Map</h2>
+      <p class="muted">Replace the src below with your Google Maps embed link.</p>
+      <div class="map-wrap">
+        <iframe title="Trip Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.930903432521!2d-73.9851305!3d40.7588962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzMyLjAiTiA3M8KwNTknMDYuMCJX!5e0!3m2!1sen!2sus!4v1600000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <section id="faq" class="card">
+      <h2>FAQ</h2>
+      <div id="faqList" class="accordion"></div>
+    </section>
+
+    <section id="gallery" class="card">
+      <h2>Gallery</h2>
+      <div id="galleryGrid" class="gallery-grid"></div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <div id="contactBlock" class="contact"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Trip Itinerary Template. Built for easy client sharing.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
