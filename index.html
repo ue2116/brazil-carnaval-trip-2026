@@ -4,19 +4,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trip Itinerary — Your Client-Ready Template</title>
-  <meta name="description" content="Clean, client-friendly trip itinerary template: overview, day-by-day plan, hotels, dining & activities, logistics, FAQs, and gallery.">
-  <meta name="theme-color" content="#1F4B99">
-  <!-- Open Graph for nicer sharing -->
-  <meta property="og:title" content="Trip Itinerary">
-  <meta property="og:description" content="A beautiful, shareable itinerary your travelers will love.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/cover.jpg">
+  <title>Trip Itinerary — Modern, Colorful & Photo‑Forward (Rio)</title>
+  <meta name="description" content="A slick, colorful, photo‑forward itinerary with dynamic banners, scroll reveals, sticky day index, password gate and calendar/PDF export.">
+  <meta name="theme-color" content="#00A8A8">
+  <link rel="preload" as="image" href="assets/cover.jpg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#">✈︎ Trip</a>
+  <div class="scroll-progress" aria-hidden="true"><div class="bar"></div></div>
+
+  <!-- Password Gate Overlay -->
+  <div id="gate" class="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-desc">
+    <div class="gate__panel">
+      <h2 id="gate-title">Protected Itinerary</h2>
+      <p id="gate-desc" class="muted">Enter your access password to view this trip.</p>
+      <div class="gate__field">
+        <input id="gateInput" type="password" placeholder="Password" aria-label="Password">
+        <button id="gateBtn" class="btn">Enter</button>
+      </div>
+      <p id="gateError" class="gate__error" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <header class="site-header reveal">
+    <a class="brand" href="#">✈︎ Ubaldo Travel</a>
     <nav class="site-nav" aria-label="Primary">
       <a href="#overview">Overview</a>
       <a href="#daily">Daily Plan</a>
@@ -34,11 +45,13 @@
     </div>
   </header>
 
-  <section class="hero" role="banner" aria-label="Trip cover">
-    <div class="hero__content">
-      <h1 id="tripTitle">Your Destination</h1>
-      <p id="tripDates" class="subtitle">Trip dates</p>
-      <p id="tripTagline" class="tagline">A short, compelling line about the trip.</p>
+  <!-- Animated gradient hero with parallax imagery -->
+  <section class="hero" role="banner" aria-label="Trip cover" data-parallax>
+    <div class="hero__overlay"></div>
+    <div class="hero__content reveal">
+      <h1 id="tripTitle" class="grad-text">Your Destination</h1>
+      <p id="tripDates" class="subtitle"></p>
+      <p id="tripTagline" class="tagline"></p>
       <div class="hero__cta">
         <a href="#daily" class="btn">View Daily Plan</a>
         <a href="#hotels" class="btn ghost">See Hotel Picks</a>
@@ -47,34 +60,46 @@
   </section>
 
   <main id="content" class="container">
-    <section id="overview" class="card">
-      <h2>Overview</h2>
-      <div id="overviewText" class="richtext"></div>
-      <ul id="highlights" class="list highlights" aria-label="Trip highlights"></ul>
-      <div class="trip-meta">
-        <div><strong>Travelers:</strong> <span id="travelers"></span></div>
-        <div><strong>Advisor:</strong> <span id="advisor"></span></div>
+    <section id="overview" class="card reveal">
+      <h2 class="section-title">Overview</h2>
+      <div class="two-col">
+        <div>
+          <div id="overviewText" class="richtext"></div>
+          <ul id="highlights" class="list highlights" aria-label="Trip highlights"></ul>
+          <div class="trip-meta">
+            <div><strong>Travelers:</strong> <span id="travelers"></span></div>
+            <div><strong>Advisor:</strong> <span id="advisor"></span></div>
+          </div>
+        </div>
+        <div class="overview-photo-stack">
+          <img src="assets/overview-1.jpg" alt="Rio overview" loading="lazy">
+          <img src="assets/overview-2.jpg" alt="Rio overview" loading="lazy">
+          <img src="assets/overview-3.jpg" alt="Rio overview" loading="lazy">
+        </div>
       </div>
     </section>
 
-    <section id="daily" class="card">
-      <h2>Daily Plan</h2>
-      <div id="dayList" class="day-list"></div>
+    <section id="daily" class="card reveal has-index">
+      <aside class="day-index" id="dayIndex" aria-label="Day index"></aside>
+      <div class="day-content">
+        <h2 class="section-title">Daily Plan</h2>
+        <div id="dayList" class="day-list"></div>
+      </div>
     </section>
 
-    <section id="hotels" class="card">
-      <h2>Hotels</h2>
-      <div id="hotelList" class="grid"></div>
+    <section id="hotels" class="card reveal">
+      <h2 class="section-title">Hotels</h2>
+      <div id="hotelList" class="grid big-cards"></div>
     </section>
 
-    <section id="experiences" class="card">
-      <h2>Dining & Activities</h2>
+    <section id="experiences" class="card reveal">
+      <h2 class="section-title">Dining & Activities</h2>
       <div id="experienceFilters" class="filters"></div>
-      <div id="experienceList" class="grid"></div>
+      <div id="experienceList" class="grid big-cards"></div>
     </section>
 
-    <section id="logistics" class="card">
-      <h2>Logistics</h2>
+    <section id="logistics" class="card reveal">
+      <h2 class="section-title">Logistics</h2>
       <div class="logistics-grid">
         <div>
           <h3>Flights</h3>
@@ -91,34 +116,34 @@
       </div>
     </section>
 
-    <section id="map" class="card">
-      <h2>Map</h2>
-      <p class="muted">Replace the src below with your Google Maps embed link.</p>
+    <section id="map" class="card reveal">
+      <h2 class="section-title">Map</h2>
       <div class="map-wrap">
-        <iframe title="Trip Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.930903432521!2d-73.9851305!3d40.7588962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzMyLjAiTiA3M8KwNTknMDYuMCJX!5e0!3m2!1sen!2sus!4v1600000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Trip Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.177186415377!2d-43.1823651!3d-22.9068467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bd50701ad2b1f%3A0x7d925b1b9f1e9!2sRio%20de%20Janeiro!5e0!3m2!1sen!2sus!4v1600000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
 
-    <section id="faq" class="card">
-      <h2>FAQ</h2>
+    <section id="faq" class="card reveal">
+      <h2 class="section-title">FAQ</h2>
       <div id="faqList" class="accordion"></div>
     </section>
 
-    <section id="gallery" class="card">
-      <h2>Gallery</h2>
-      <div id="galleryGrid" class="gallery-grid"></div>
+    <section id="gallery" class="card reveal">
+      <h2 class="section-title">Gallery</h2>
+      <div id="galleryMasonry" class="masonry"></div>
     </section>
 
-    <section id="contact" class="card">
-      <h2>Contact</h2>
+    <section id="contact" class="card reveal">
+      <h2 class="section-title">Contact</h2>
       <div id="contactBlock" class="contact"></div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <small>© <span id="year"></span> Trip Itinerary Template. Built for easy client sharing.</small>
+    <small>© <span id="year"></span> Ubaldo Travel • Modern Itinerary Template</small>
   </footer>
 
+  <script>window.PASSWORD_HASH='abe77645455c41f58f42d0fe8f706fbef92150e633d9ca82d54e332a94910aa3';</script>
   <script src="script.js"></script>
 </body>
 </html>
